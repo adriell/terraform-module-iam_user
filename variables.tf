@@ -29,8 +29,8 @@ variable "attach_policy_arns" {
 }
 
 variable "tags" {
-  description = "Tags applied to all resources"
-  default     = {}
+  type    = map(string)
+  default = null
 }
 variable "policy" {
   default = []
