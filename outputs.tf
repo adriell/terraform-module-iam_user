@@ -14,7 +14,7 @@ output "access_key_id" {
   value       = element(concat(aws_iam_access_key.this.*.id, [""]), 0)
 }
 
-output "secret_key" {
+output "access_secret_key" {
   description = "Secret access key"
   value       = element(concat(aws_iam_access_key.this.*.secret, [""]), 0)
 }

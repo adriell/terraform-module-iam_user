@@ -13,27 +13,20 @@ variable "path" {
   default     = "/"
 }
 
-variable "inline_policies" {
-  description = "Inline defined policies to attach to the IAM user"
-  default     = []
-}
-
-variable "custom_policies" {
-  description = "Custom policies to create and attach to the IAM user"
-  default     = []
-}
-
 variable "attach_policy_arns" {
   description = "Existing policy ARNs to attach to the IAM user"
   default     = []
 }
 
 variable "tags" {
+  description = "Tags of the resource"
   type    = map(string)
   default = null
 }
 variable "policy" {
-  default = []
+  description = "Policy to attach Iam User"
+  type        = string
+  default     = null
   
 }
 
