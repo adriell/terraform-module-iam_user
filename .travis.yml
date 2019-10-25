@@ -1,0 +1,31 @@
+stages:
+  - lint
+  - test
+
+Lint:
+  stage: lint
+  image:
+    name: wata727/tflint:latest
+    entrypoint: [""]
+  before_script:
+    - tflint --version
+  script:
+    - tflint
+
+.test-template: &test-template
+  stage: test
+  image:
+    name: hashicorp/terraform:latest
+    entrypoint: [""]
+  before_script:
+    - terraform version
+
+Validate:
+  <<: *test-template
+  script:
+    - terraform validate -check-variables=false
+
+Fmt:
+  <<: *test-template
+  script:
+    - '[ -z "$( terraform fmt -write=false )" ] || { terraform fmt -write=false -diff ; exit 1 ; }'
